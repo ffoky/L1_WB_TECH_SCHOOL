@@ -21,16 +21,13 @@ func main() {
 		ans[group] = append(ans[group], temp)
 	}
 
-	// Извлекаем ключи в slice
 	keys := make([]int, 0, len(ans))
 	for key := range ans {
 		keys = append(keys, key)
 	}
 
-	// Сортируем ключи по возрастанию
 	sort.Ints(keys)
 
-	// Итерируемся по отсортированным ключам
 	for _, key := range keys {
 		fmt.Fprintf(writer, "%d:{", key)
 		for i, value := range ans[key] {
