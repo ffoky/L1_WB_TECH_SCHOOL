@@ -11,16 +11,20 @@ func main() {
 	defer writer.Flush()
 	A := []int{1, 2, 3}
 	B := []int{2, 3, 4}
-	intersection := make([]int, 0, len(A))
-	for _, valueA := range A {
-		for _, valueB := range B {
-			if valueA == valueB {
-				intersection = append(intersection, valueA)
-			}
-		}
-	}
-	for _, v := range intersection {
-		fmt.Fprint(writer, v)
+
+	mapA := make(map[int]struct{})
+	for _, v := range A {
+		mapA[v] = struct{}{}
 	}
 
+	intersection := make(map[int]struct{})
+	for _, v := range B {
+		if _, ok := mapA[v]; ok {
+			intersection[v] = struct{}{}
+		}
+	}
+
+	for v := range intersection {
+		fmt.Fprint(writer, v)
+	}
 }
