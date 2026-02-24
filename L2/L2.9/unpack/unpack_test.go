@@ -17,6 +17,7 @@ func TestUnpack(t *testing.T) {
 		{"a0bc2d5e", "bccddddde", false},
 		{"abcd", "abcd", false},
 		{"45", "", true},
+		{"a45", "aaaa", true},
 		{"", "", false},
 		{`qwe\4\5`, "qwe45", false},
 		{`qwe\45`, "qwe44444", false},

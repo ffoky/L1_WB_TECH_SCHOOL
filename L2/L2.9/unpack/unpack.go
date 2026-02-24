@@ -7,6 +7,8 @@ import (
 
 var errInvalidString = errors.New("invalid string")
 
+const asciiNumShift = 48
+
 func Unpack(s string) (string, error) {
 	runes := []rune(s)
 	n := len(runes)
@@ -17,14 +19,13 @@ func Unpack(s string) (string, error) {
 	var escaped bool
 	for i := 0; i < n; i++ {
 		r := runes[i]
-		if r == '\\' && !escaped {
+		if r == '\\' {
 			escaped = true
 			continue
 		}
 		if isNum(r) && !escaped {
 			return "", errInvalidString
 		}
-		escaped = false
 		if i+1 < n && isNum(runes[i+1]) {
 			for range atoi(runes[i+1]) {
 				res.WriteRune(r)
@@ -33,6 +34,7 @@ func Unpack(s string) (string, error) {
 		} else {
 			res.WriteRune(r)
 		}
+		escaped = false
 	}
 	return res.String(), nil
 }
@@ -42,5 +44,5 @@ func isNum(s rune) bool {
 }
 
 func atoi(s rune) int {
-	return int(s - '0')
+	return int(s - asciiNumShift)
 }

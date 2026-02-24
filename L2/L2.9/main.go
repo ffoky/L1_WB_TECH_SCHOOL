@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	s := "a4bc2d5e"
+	s := "45"
 	u, err := unpack.Unpack(s)
 	if err != nil {
 		slog.Error("error", "err", err)
