@@ -4,6 +4,8 @@ tests: true
 linters:
 default: none
 enable:
+  - errorlint
+  - wrapcheck
   - asciicheck
   - bidichk
   - bodyclose
@@ -110,7 +112,7 @@ formatters:
         - localmodule
     goimports:
       local-prefixes:
-        - gitlab.education.tbank.ru/backend-academy-go-2025/homeworks/link-tracker
+        - L2.10
   exclusions:
     generated: lax
     paths:
