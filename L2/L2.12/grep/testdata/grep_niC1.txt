@@ -1,0 +1,10 @@
+5-func main() {
+6:	fmt.Println("hello world")
+7:	fmt.Println("goodbye world")
+8-	x := 42
+9:	fmt.Println(x)
+10-}
+--
+12-func helper() {
+13:	fmt.Println("helper")
+14-}

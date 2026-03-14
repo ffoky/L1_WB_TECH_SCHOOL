@@ -1,0 +1,5 @@
+3:import "fmt"
+6:	fmt.Println("hello world")
+7:	fmt.Println("goodbye world")
+9:	fmt.Println(x)
+13:	fmt.Println("helper")

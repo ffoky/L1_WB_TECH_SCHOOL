@@ -1,0 +1,11 @@
+
+func main() {
+	fmt.Println("hello world")
+--
+
+func helper() {
+	fmt.Println("helper")
+--
+
+func unused() {
+	return

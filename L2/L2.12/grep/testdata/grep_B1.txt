@@ -1,0 +1,8 @@
+
+func main() {
+--
+
+func helper() {
+--
+
+func unused() {
