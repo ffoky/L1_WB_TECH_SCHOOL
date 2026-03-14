@@ -198,6 +198,12 @@ func TestSortFromFile(t *testing.T) {
 			expected: "testdata/crlf_want.txt",
 			opts:     sorting.Options{},
 		},
+		{
+			name:     "happy -k 2 из файла",
+			input:    "testdata/k.txt",
+			expected: "testdata/k_want.txt",
+			opts:     sorting.Options{Column: 2},
+		},
 	}
 
 	for _, tt := range tests {

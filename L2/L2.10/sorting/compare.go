@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// monthIndex содержит порядковые номера месяцев.
+// порядковые номера месяцев.
 var monthIndex = map[string]int{
 	"Jan": 1, "Feb": 2, "Mar": 3,
 	"Apr": 4, "May": 5, "Jun": 6,
@@ -14,12 +14,10 @@ var monthIndex = map[string]int{
 	"Oct": 10, "Nov": 11, "Dec": 12,
 }
 
-// sizeMap содержит множители для человекочитаемых суффиксов размера.
-//
-//	K —килобайт  1 << 10 = 1 024
-//	M  мегабайт  1 << 20 = 1 048 576
-//	G  гигабайт  1 << 30 = 1 073 741 824
-//	T  терабайт  1 << 40 = 1 099 511 627 776
+// K —килобайт  1 << 10 = 1 024
+// M  мегабайт  1 << 20 = 1 048 576
+// G  гигабайт  1 << 30 = 1 073 741 824
+// T  терабайт  1 << 40 = 1 099 511 627 776
 var sizeMap = map[byte]int{
 	'K': 1 << 10, 'k': 1 << 10,
 	'M': 1 << 20, 'm': 1 << 20,
@@ -27,8 +25,6 @@ var sizeMap = map[byte]int{
 	'T': 1 << 40, 't': 1 << 40,
 }
 
-// makeCmpFunc возвращает функцию для сравнения.
-// Учитывает столбец -k, обрезку пробелов -b, режим сравнения -n/-M/-h и обратную -r.
 func makeCmpFunc(opts Options) func(a, b string) int {
 	return func(a, b string) int {
 		fa := extractField(a, opts.Column)
@@ -58,8 +54,9 @@ func makeCmpFunc(opts Options) func(a, b string) int {
 	}
 }
 
-// extractField возвращает n-ю колонку.
-// Если col == 0, возвращает всю строку. Если столбца нет — пустую строку.
+// Возвращает n-ю колонку
+// Если col == 0, возвращает всю строку.
+// Если столбца нет,то пустую строку.
 func extractField(line string, col int) string {
 	if col == 0 {
 		return line
@@ -71,8 +68,7 @@ func extractField(line string, col int) string {
 	return cols[col-1]
 }
 
-// compareNumeric сравнивает два элемента как float64, т.е. -n.
-// Непарсируемые значения считаются равными 0.
+// -n
 func compareNumeric(a, b string) int {
 	af, err := strconv.ParseFloat(a, 64)
 	if err != nil {
@@ -85,19 +81,18 @@ func compareNumeric(a, b string) int {
 	return cmpOrdered(af, bf)
 }
 
-// compareMonth сравнивает числа месяцев -M.
-// Не месяц = 0 .
+// Сравниваем числа месяцев -M
+// Не месяц = 0
 func compareMonth(a, b string) int {
 	return cmpOrdered(monthIndex[a], monthIndex[b])
 }
 
-// compareHuman сравнивает размеры  двух элементов.
+// -h
 func compareHuman(a, b string) int {
 	return cmpOrdered(parseSize(a), parseSize(b))
 }
 
-// parseSize парсит человекочитаемый размер в байты.
-// Возвращает 0 если строка не распознана как в GNU.
+// Возвращает 0 если строка не распознана как в GNU
 func parseSize(s string) int {
 	if s == "" {
 		return 0
@@ -117,7 +112,9 @@ func parseSize(s string) int {
 	return n
 }
 
-// cmpOrdered сравнивает два сравниваемых типа в стиле GNU.
+// сравнивает два  типа в стиле GNU
+// т.е. 1,-1 и 0 -1 и 1 нужны для reverse
+// 0 нужен для проверки isSorted
 func cmpOrdered[T cmp.Ordered](a, b T) int {
 	if a > b {
 		return 1

@@ -23,6 +23,11 @@ func main() {
 
 	flag.Parse()
 
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: sort [OPTIONS] [FILE]\n")
+		flag.PrintDefaults()
+	}
+
 	var reader io.Reader = os.Stdin
 	if args := flag.Args(); len(args) > 0 {
 		file, err := os.Open(args[0])

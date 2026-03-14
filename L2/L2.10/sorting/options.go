@@ -1,6 +1,5 @@
 package sorting
 
-// Options параметры сортировки GNU sort
 type Options struct {
 	Column            int
 	TrimTailSpace     bool
