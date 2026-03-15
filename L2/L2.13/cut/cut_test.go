@@ -164,3 +164,4 @@ func TestCutFromFile(t *testing.T) {
 		})
 	}
 }
+
