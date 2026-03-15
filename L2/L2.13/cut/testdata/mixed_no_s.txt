@@ -1,0 +1,4 @@
+no delimiter here
+a
+also no delimiter
+x

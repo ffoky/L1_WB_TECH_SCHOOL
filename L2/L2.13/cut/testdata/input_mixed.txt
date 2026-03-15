@@ -1,0 +1,4 @@
+no delimiter here
+a:b:c
+also no delimiter
+x:y:z

@@ -1,0 +1,4 @@
+age	city	country
+30	Moscow	Russia
+25	Berlin	Germany
+35	Tokyo	Japan

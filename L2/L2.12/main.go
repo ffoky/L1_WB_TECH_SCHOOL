@@ -41,7 +41,7 @@ func main() {
 
 	pattern := args[0]
 
-	var reader = os.Stdin
+	reader := os.Stdin
 	if len(args) > 1 {
 		f, err := os.Open(args[1])
 		if err != nil {

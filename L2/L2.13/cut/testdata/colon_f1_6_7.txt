@@ -1,0 +1,3 @@
+root:/root:/bin/bash
+daemon:/usr/sbin:/usr/sbin/nologin
+bin:/bin:/usr/sbin/nologin

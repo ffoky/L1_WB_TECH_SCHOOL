@@ -1,0 +1,4 @@
+name	city
+Alice	Moscow
+Bob	Berlin
+Charlie	Tokyo
