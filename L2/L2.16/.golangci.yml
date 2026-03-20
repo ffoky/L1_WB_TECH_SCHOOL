@@ -112,7 +112,7 @@ formatters:
         - localmodule
     goimports:
       local-prefixes:
-        - L2.15
+        - L2.16
   exclusions:
     generated: lax
     paths:
